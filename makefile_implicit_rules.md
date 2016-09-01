@@ -34,3 +34,6 @@ Has implicit rules for generating .c from .l and .y
 
 Some of the variables are -
 *AR, CC (program for compiling C), CXX (program for compiling C++), CPP (program for running C Preprocessor), CPPFLAGS (extra flags to give to C preprocessor)*
+
+## Intermediate Files
+ * Don't understand this quite well *

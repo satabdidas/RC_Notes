@@ -56,3 +56,27 @@ First libcurses.so is searched in the current directory, vpath search path, VPAT
 
 ## Phony Targets
 To avoid a conflict with a file of the same name and to improve performance.
+
+## Built-in Targets
+
+```
+.SILENT # no printing of the recipe of the prerequisites of this target.
+.INTERMEDIATE
+.PHONY
+```
+
+## Multiple Rules for One Target
+
+All the prerequisites are mereged into one list. If more than one recipe are found, then the last one is applied.
+
+```
+main.o : main.h foo.h
+
+main.o : main.c
+       $(CC) $(CFLAGS) -o $@ $^
+```
+
+## Double colon rule
+If a target appears in multiple double colon rule, then all the recipes for double colon rules are applied.
+
+There can not be mix between double colon and single colon rule for the same target.
