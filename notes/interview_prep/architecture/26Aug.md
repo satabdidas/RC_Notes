@@ -34,6 +34,4 @@ Read
 - Key
 - Type
 
-
-
 Question: If there's a LB in between, when a request comes,
