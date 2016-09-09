@@ -50,6 +50,17 @@ The above can also be written as
 FOO = $(BAR:%.o=%.c)
 ```
 
+## Wildcard expansion
+
+Wildcard expansion doesn't happen when you define a variable. They happen in rules though.
+```
+objects = *.o
+```
+The value of ```objects``` is ```*.o```. To expand the wildcard, you have to write
+```
+objects = $(wildcard *.o)
+```
+
 ## Appending to variables
 ```
 FOO = foo
