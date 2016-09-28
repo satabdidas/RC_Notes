@@ -56,7 +56,43 @@ Number of characters in the class name + class name.
 
 Foo is encoded as 3Foo.
 
-### Name mangling stratefy gor class member methods
+### Name mangling strategy for class member methods
 Original method name + __ + class name + single letter encoding of of each argument type.
 
 Foo::bar(int, long) is encoded as bar__3Fooil
+
+## How does linker resolve multiply defined symbols?
+
+The compiler lets the assembler know which are strong and which are weak symbols. The assembler encodes that information in the relocatable executable file.
+
+Examples of strong symbols - functions and initialized global variables
+Examples of weak symbols - uninitialized global variables
+
+The linker applies the following rules -
+i. If there are multiple strong symbols, throw an error.
+ii. If there are one strong symbol and multiple weak symbols, choose the strong symbol.
+iii. If there are multiple weak symbols, choose one randomly.
+
+There can be problems because of rule ii and iii.
+
+```
+/* file foo.c */
+double x;
+
+void foo() {
+     x = -0.0;
+}
+```
+```
+/* file main.c */
+int x = 12345;
+int y = 23456;
+int main() {
+    foo();
+    printf("%d, %d\n", x, y);
+}
+```
+
+On IA32, the function foo() will write 8 bytes to x. But x is actually 4 bytes, hence it will overwrite the y's value as well.
+
+If on doubt, compile gcc with ```-fno-common-flag```. gcc will give an error if there are multiple global symbols defined.
