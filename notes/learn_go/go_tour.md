@@ -35,6 +35,13 @@ if v := math.Pow(x, n); v < 3 {
 
 12. defer and stack of defer are cooler
 
+## Methods and Interfaces
+
+13. Define methods on types using receiver. There can be pointer receivers too.
+
+14. Interface is a type. It encompasses a set of methods. A value of interface type is a value that implements those methods.
+
+15. Type assertions
 
 
 Confusions

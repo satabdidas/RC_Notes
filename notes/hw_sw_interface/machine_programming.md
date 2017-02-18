@@ -5,11 +5,15 @@
 Architecture - what's visible to the software. e.g. registers
 Microarchitecture - how the architecture is implemented. e.g. cache, core frequency
 
-## 3 important things in assembly programming
+## 3 important things in assembly programming - Program visible state
 
-1. Program counter. EIP in IA32 and RIP in x86-64
-2. Registers
+1. Program counter. EIP in IA32 and RIP in x86-64. Extended Instruction Pointers
+2. Registers - holds data. Very fast memory. Close to the CPU
 3. Condition codes - used for conditional branching, stores status information of the most recent arithmetic operation
+
+## Memory
+
+byte addressible. memory can be thought of as an array of bytes.
 
 ## Compiling into assembly
 ```
